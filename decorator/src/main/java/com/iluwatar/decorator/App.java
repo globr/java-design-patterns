@@ -58,5 +58,7 @@ public class App {
     clubbedTroll.attack();
     clubbedTroll.fleeBattle();
     LOGGER.info("Clubbed troll power: {}.\n", clubbedTroll.getAttackPower());
+
+    // This is a test line..
   }
 }
