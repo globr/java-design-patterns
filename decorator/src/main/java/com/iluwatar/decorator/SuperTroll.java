@@ -23,35 +23,33 @@
 
 package com.iluwatar.decorator;
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Decorator that adds a club for the troll.
+ * Decorator that adds a club for the super troll.
  */
 @Slf4j
-// @RequiredArgsConstructor
-public class ClubbedTroll implements Troll {
+public class SuperTroll implements Troll {
 
     private final Troll decorated;
 
-    public ClubbedTroll(Troll decorated) {
+    public SuperTroll(Troll decorated) {
         this.decorated = decorated;
     }
 
     @Override
     public void attack() {
         decorated.attack();
-        LOGGER.info("The troll swings at you with a club!");
+        LOGGER.info("The super troll swings at you with a super club!");
     }
 
     @Override
     public void fleeBattle() {
-        decorated.fleeBattle();
+        LOGGER.info("The super troll won't flee from battle and swings again at you with a super club, but misses again!");
     }
 
     @Override
     public int getAttackPower() {
-        return decorated.getAttackPower() * 3;
+        return (int) Math.pow(decorated.getAttackPower(), 3);
     }
 }

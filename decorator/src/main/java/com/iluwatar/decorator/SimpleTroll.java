@@ -37,12 +37,12 @@ public class SimpleTroll implements Troll {
   }
 
   @Override
-  public int getAttackPower() {
-    return 10;
+  public void fleeBattle() {
+    LOGGER.info("The troll shrieks in horror and runs away!");
   }
 
   @Override
-  public void fleeBattle() {
-    LOGGER.info("The troll shrieks in horror and runs away!");
+  public int getAttackPower() {
+    return 10;
   }
 }

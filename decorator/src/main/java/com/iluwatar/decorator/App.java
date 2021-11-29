@@ -3,7 +3,7 @@
  * Copyright © 2014-2021 Ilkka Seppälä
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
+ * of this software and associated documedentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
@@ -38,27 +38,38 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class App {
 
-  /**
-   * Program entry point.
-   *
-   * @param args command line args
-   */
-  public static void main(String[] args) {
+    /**
+     * Program entry point.
+     *
+     * @param args command line args
+     */
+    public static void main(String[] args) {
+        // simple troll
+        LOGGER.info("A simple looking troll approaches.");
+        var simpleTroll = new SimpleTroll();
+        simpleTroll.attack();
+        simpleTroll.fleeBattle();
+        LOGGER.info("Simple troll power: {}.\n", simpleTroll.getAttackPower());
 
-    // simple troll
-    LOGGER.info("A simple looking troll approaches.");
-    var troll = new SimpleTroll();
-    troll.attack();
-    troll.fleeBattle();
-    LOGGER.info("Simple troll power: {}.\n", troll.getAttackPower());
+        // clubbed troll, change the behavior of the simple troll by adding a decorator
+        LOGGER.info("A troll with huge club surprises you.");
+        var clubbedTroll = new ClubbedTroll(simpleTroll);
+        clubbedTroll.attack();
+        clubbedTroll.fleeBattle();
+        LOGGER.info("Clubbed troll power: {}.\n", clubbedTroll.getAttackPower());
 
-    // change the behavior of the simple troll by adding a decorator
-    LOGGER.info("A troll with huge club surprises you.");
-    var clubbedTroll = new ClubbedTroll(troll);
-    clubbedTroll.attack();
-    clubbedTroll.fleeBattle();
-    LOGGER.info("Clubbed troll power: {}.\n", clubbedTroll.getAttackPower());
+        // super troll, change the behavior of the simple troll by adding a decorator
+        LOGGER.info("A super troll with super huge club surprises you.");
+        var superTroll = new SuperTroll(simpleTroll);
+        superTroll.attack();
+        superTroll.fleeBattle();
+        LOGGER.info("Super troll power: {}.\n", superTroll.getAttackPower());
 
-    // This is a test line..
-  }
+        // peaceful troll, change the behavior of the simple troll by adding a decorator
+        LOGGER.info("A peaceful troll with a awkward smile surprises you.");
+        var peacefulTroll = new PeacefulTroll(simpleTroll);
+        peacefulTroll.attack();
+        peacefulTroll.fleeBattle();
+        LOGGER.info("Peaceful troll power: {}.\n", peacefulTroll.getAttackPower());
+    }
 }
